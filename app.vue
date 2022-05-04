@@ -4,3 +4,7 @@
     <NuxtPage />
   </NuxtLayout>
 </template>
+
+<script setup>
+const counter = useCounter();
+</script>
