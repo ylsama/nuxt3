@@ -1,5 +1,6 @@
 <script setup>
 const counter = useState('counter', () => Math.round(Math.random() * 1000));
+const jumpValue = useState('jumpValue', () => 1);
 </script>
 
 <template>
@@ -35,7 +36,7 @@ const counter = useState('counter', () => Math.round(Math.random() * 1000));
         >{{ counter }}</span
       >
       <button
-        @click="counter--"
+        @click="counter = counter - jumpValue"
         class="
           px-4
           py-2
@@ -50,11 +51,12 @@ const counter = useState('counter', () => Math.round(Math.random() * 1000));
       </button>
     </div>
     <div class="flex items-center justify-center gap-2">
-      <p>Faster: {{ jumpValue }}</p>
+      <p>Faster:</p>
       <input
         type="number"
-        name="number1"
-        @input="update_number1"
+        name="jumpValue"
+        v-model="jumpValue"
+        @input="update_jumpValue"
         placeholder="Jump value"
         class="
           w-30
